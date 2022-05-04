@@ -4,6 +4,7 @@
 
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:my_flutter_app/components/trafficLightWidget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,33 +39,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Center(
-        child: Column(
-            children: [
-              Text('hihi'),
-              Row(
-                children: [
-                  FlatButton(
-                    child: Text('red'),
-                    color: Colors.red,
-                    textColor: Colors.white,
-                    onPressed: () {}, // tạm thời khi click vào button sẽ chưa có tác dụng gì
-                  ),
-                  FlatButton(
-                    child: Text('yellow'),
-                    color: Colors.yellow,
-                    onPressed: () {},
-                  ),
-                  FlatButton(
-                    child: Text('green'),
-                    color: Colors.green,
-
-                    onPressed: () {},
-                  )
-                ],
-              )
-            ]
-        )
+    return Container(
+      child: TrafficLightWidget(),
     );
   }
 }
