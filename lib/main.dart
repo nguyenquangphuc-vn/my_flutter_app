@@ -16,46 +16,56 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final wordPair = WordPair.random();
     return MaterialApp(
-      title: 'Welcome to Flutter',
-      home: Scaffold(
+      home: buildSafeArea()
+    );
+  }
+
+  SafeArea buildSafeArea() {
+    return SafeArea(
+      child: Scaffold(
         appBar: AppBar(
-          title: const Text('Welcome to Flutter'),
+          backgroundColor: Colors.blue,
+          title: Text('Flutter')
         ),
-        body: const Center(
-          child: RandomWords(),
-        ),
+        body: HomePage()
       ),
     );
   }
 }
 
-
-class RandomWords extends StatefulWidget {
-  const RandomWords({Key? key}) : super(key: key);
-
-  @override
-  State<RandomWords> createState() => _RandomWordsState();
-}
-
-class _RandomWordsState extends State<RandomWords> {
-  final _suggestions = <WordPair>[];
-  final _biggerFont = const TextStyle(fontSize: 18);
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final wordPair = WordPair.random();
+    return  Center(
+        child: Column(
+            children: [
+              Text('hihi'),
+              Row(
+                children: [
+                  FlatButton(
+                    child: Text('red'),
+                    color: Colors.red,
+                    textColor: Colors.white,
+                    onPressed: () {}, // tạm thời khi click vào button sẽ chưa có tác dụng gì
+                  ),
+                  FlatButton(
+                    child: Text('yellow'),
+                    color: Colors.yellow,
+                    onPressed: () {},
+                  ),
+                  FlatButton(
+                    child: Text('green'),
+                    color: Colors.green,
 
-    return ListView.builder(
-        padding: const EdgeInsets.all(16.0),
-    itemBuilder: /*1*/ (context, i) {
-    if (i.isOdd) return const Divider(); /*2*/
-
-    final index = i ~/ 2; /*3*/
-    if (index >= _suggestions.length) {
-    _suggestions.addAll(generateWordPairs().take(10)); /*4*/
-    }
-    return Text(_suggestions[index].asPascalCase);
-    });
+                    onPressed: () {},
+                  )
+                ],
+              )
+            ]
+        )
+    );
   }
-
 }
+
